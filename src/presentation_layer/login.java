@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package presentation_layer;
 
 import java.awt.Color;
@@ -11,10 +7,15 @@ import javax.swing.border.Border;
 
 /**
  *
- * @author Jaide
+ * @author Jaider Manosalva
+ * @author Maria Amado
+ * @author Daniel Acosta
+ * @author Juan Lamouroux
+ * @author Tatiana Saenz
  */
 public class login extends javax.swing.JFrame {
-
+    
+    //variables para la posicion del formulario
     int xMouse, yMouse;
     
     public login() {
@@ -267,33 +268,37 @@ public class login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+   //no se usa
     private void TextEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextEmailActionPerformed
 
+    //obtener la posicion del formulario
     private void BarraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraMousePressed
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_BarraMousePressed
-
+    //no se usa
     private void BarraMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraMouseReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_BarraMouseReleased
-
+    
+    //Arrastrar el panel por la pantalla
     private void BarraMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x - xMouse,y - yMouse);
     }//GEN-LAST:event_BarraMouseDragged
-
+    
+    //Salir del sistema
     private void ExitLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitLabelMouseClicked
         System.exit(0);
     }//GEN-LAST:event_ExitLabelMouseClicked
-
+    //no se usa
     private void ExitPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitPanelMouseEntered
         
     }//GEN-LAST:event_ExitPanelMouseEntered
-
+    //estilos del boton
     private void ExitLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitLabelMouseEntered
         ExitPanel.setBackground(Color.red);
         ExitLabel.setForeground(Color.white);
@@ -310,11 +315,13 @@ public class login extends javax.swing.JFrame {
 
     private void labelButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelButtonMouseEntered
         
+        //Estilos del Boton
         panelButton.setOpaque(false);
         panelButton.setBackground(new Color(0, 0, 0, 0));
         Border borde = BorderFactory.createLineBorder(black, 2);
         panelButton.setBorder(borde);
         
+        //estilos del label del boton
         labelButton.setForeground(Color.black);
     }//GEN-LAST:event_labelButtonMouseEntered
 
@@ -346,9 +353,6 @@ public class login extends javax.swing.JFrame {
         TextPassword.setForeground(black);
     }//GEN-LAST:event_TextPasswordMousePressed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
