@@ -2,11 +2,15 @@ package presentation_layer;
 
 import java.awt.Color;
 import static java.awt.Color.black;
+import java.awt.Font;
+import java.awt.font.TextAttribute;
+import java.util.Map;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 
 /**
- *
  * @author Jaider Manosalva
  * @author Maria Amado
  * @author Daniel Acosta
@@ -50,10 +54,13 @@ public class login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
+        bg.setMinimumSize(new java.awt.Dimension(800, 500));
         bg.setName(""); // NOI18N
+        bg.setPreferredSize(new java.awt.Dimension(800, 500));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Conten1.setBackground(new java.awt.Color(51, 102, 255));
@@ -92,6 +99,7 @@ public class login extends javax.swing.JFrame {
         bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Sign in");
         jLabel2.setToolTipText("");
         bg.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
@@ -99,11 +107,30 @@ public class login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 102, 255));
         jLabel3.setText("I forgot the password");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel3MouseExited(evt);
+            }
+        });
         bg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 102, 255));
         jLabel6.setText("¿Create account?");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel6MouseExited(evt);
+            }
+        });
         bg.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
 
         TextEmail.setForeground(new java.awt.Color(204, 204, 204));
@@ -122,7 +149,7 @@ public class login extends javax.swing.JFrame {
                 TextEmailActionPerformed(evt);
             }
         });
-        bg.add(TextEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 370, 30));
+        bg.add(TextEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 360, 30));
 
         jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
         bg.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 360, 10));
@@ -139,7 +166,7 @@ public class login extends javax.swing.JFrame {
         bg.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 360, 10));
 
         TextPassword.setForeground(new java.awt.Color(204, 204, 204));
-        TextPassword.setText("******");
+        TextPassword.setText("!!!!!!!");
         TextPassword.setBorder(null);
         TextPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -149,7 +176,7 @@ public class login extends javax.swing.JFrame {
         bg.add(TextPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 360, 30));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentation_layer/images/view.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentation_layer/images/eye-line.png"))); // NOI18N
         bg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 330, 30, 30));
 
         panelButton.setBackground(new java.awt.Color(51, 102, 255));
@@ -310,7 +337,13 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitLabelMouseExited
 
     private void labelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelButtonMouseClicked
-        // TODO add your handling code here:
+        //Eliminar los espacios al inicio y al final; verificar si el usuario solo hizo space en el txt
+        String email = TextEmail.getText().trim();
+        String pass= String.valueOf(TextPassword.getPassword()).trim();
+        
+        if(email.equals("Enter your Email")|| pass.equals("!!!!!!!") || email.isEmpty() || pass.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Los campos estan vacios");
+        }
     }//GEN-LAST:event_labelButtonMouseClicked
 
     private void labelButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelButtonMouseEntered
@@ -340,18 +373,65 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_TextEmailMouseClicked
 
     private void TextEmailMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextEmailMousePressed
-        TextEmail.setText("");
-        TextEmail.setForeground(black);
-        TextPassword.setText("******");
-        TextPassword.setForeground(Color.gray);
+        if (TextEmail.getText().equals("Enter your Email")) {
+            TextEmail.setText("");
+            TextEmail.setForeground(black);
+        }
+        if(String.valueOf(TextPassword.getPassword()).isEmpty()){
+            TextPassword.setText("!!!!!!!");
+            TextPassword.setForeground(Color.gray);
+        }
     }//GEN-LAST:event_TextEmailMousePressed
 
     private void TextPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextPasswordMousePressed
-        TextEmail.setText("Enter your Email");
-        TextEmail.setForeground(Color.gray);
-        TextPassword.setText("");
-        TextPassword.setForeground(black);
+        if (String.valueOf(TextPassword.getPassword()).equals("!!!!!!!")) {
+           TextPassword.setText("");
+           TextPassword.setForeground(black);
+        }
+        if(TextEmail.getText().isEmpty()){
+            TextEmail.setText("Enter your Email");
+            TextEmail.setForeground(Color.gray);
+        }
+        
     }//GEN-LAST:event_TextPasswordMousePressed
+
+    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
+        Font font =  new Font("Segoe UI", Font.BOLD, 14);
+        Map attributes = font.getAttributes();
+        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        jLabel3.setFont(font.deriveFont(attributes));
+        jLabel3.setForeground(Color.BLUE);
+    }//GEN-LAST:event_jLabel3MouseEntered
+
+    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
+        Font font =  new Font("Segoe UI", Font.BOLD, 14);
+        Map attributes = font.getAttributes();
+        attributes.put(TextAttribute.UNDERLINE, -1);
+        jLabel3.setFont(font.deriveFont(attributes));
+        jLabel3.setForeground(new Color(51,102,255));
+    }//GEN-LAST:event_jLabel3MouseExited
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        RecoverPassword jframe = new RecoverPassword();
+        jframe.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
+        Font font =  new Font("Segoe UI", Font.BOLD, 14);
+        Map attributes = font.getAttributes();
+        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        jLabel6.setFont(font.deriveFont(attributes));
+        jLabel6.setForeground(Color.BLUE);
+    }//GEN-LAST:event_jLabel6MouseEntered
+
+    private void jLabel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseExited
+        Font font =  new Font("Segoe UI", Font.BOLD, 14);
+        Map attributes = font.getAttributes();
+        attributes.put(TextAttribute.UNDERLINE, -1);
+        jLabel6.setFont(font.deriveFont(attributes));
+        jLabel6.setForeground(new Color(51,102,255));
+    }//GEN-LAST:event_jLabel6MouseExited
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
