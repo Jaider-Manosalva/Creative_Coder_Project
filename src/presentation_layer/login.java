@@ -304,6 +304,7 @@ public class login extends javax.swing.JFrame {
     private void BarraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraMousePressed
         xMouse = evt.getX();
         yMouse = evt.getY();
+        System.out.print(bg);
     }//GEN-LAST:event_BarraMousePressed
     //no se usa
     private void BarraMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraMouseReleased

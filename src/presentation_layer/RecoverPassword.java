@@ -49,8 +49,13 @@ public class RecoverPassword extends javax.swing.JFrame {
         Barra = new javax.swing.JPanel();
         ExitPanel = new javax.swing.JPanel();
         ExitLabel = new javax.swing.JLabel();
+        BackPanel = new javax.swing.JPanel();
+        BackLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -209,19 +214,63 @@ public class RecoverPassword extends javax.swing.JFrame {
                 .addComponent(ExitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        BackPanel.setBackground(new java.awt.Color(255, 255, 255));
+        BackPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BackPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BackPanelMouseEntered(evt);
+            }
+        });
+
+        BackLabel.setBackground(new java.awt.Color(255, 255, 255));
+        BackLabel.setForeground(new java.awt.Color(0, 0, 0));
+        BackLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        BackLabel.setText("<-");
+        BackLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BackLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BackLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BackLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BackLabelMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout BackPanelLayout = new javax.swing.GroupLayout(BackPanel);
+        BackPanel.setLayout(BackPanelLayout);
+        BackPanelLayout.setHorizontalGroup(
+            BackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(BackLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        BackPanelLayout.setVerticalGroup(
+            BackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(BackLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
         javax.swing.GroupLayout BarraLayout = new javax.swing.GroupLayout(Barra);
         Barra.setLayout(BarraLayout);
         BarraLayout.setHorizontalGroup(
             BarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BarraLayout.createSequentialGroup()
                 .addComponent(ExitPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 770, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BackPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 728, Short.MAX_VALUE))
         );
         BarraLayout.setVerticalGroup(
             BarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BarraLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(ExitPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(BarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ExitPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BackPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jPanel1.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 30));
@@ -313,6 +362,26 @@ public class RecoverPassword extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BarraMouseReleased
 
+    private void BackPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackPanelMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BackPanelMouseEntered
+
+    private void BackLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackLabelMouseClicked
+        login jframe = new login();
+        jframe.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BackLabelMouseClicked
+
+    private void BackLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackLabelMouseEntered
+        BackPanel.setBackground(Color.red);
+        BackLabel.setForeground(Color.white);
+    }//GEN-LAST:event_BackLabelMouseEntered
+
+    private void BackLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackLabelMouseExited
+        BackPanel.setBackground(Color.white);
+        BackLabel.setForeground(Color.black);
+    }//GEN-LAST:event_BackLabelMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -349,6 +418,8 @@ public class RecoverPassword extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel BackLabel;
+    private javax.swing.JPanel BackPanel;
     private javax.swing.JPanel Barra;
     private javax.swing.JPanel Conten1;
     private javax.swing.JLabel ExitLabel;
